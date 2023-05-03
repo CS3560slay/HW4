@@ -1,19 +1,24 @@
 package Scheduler;
 
-public class Schedule {
+public class Schedule
+{
 
     /**
      * @param taskName Name of the task being created
      * @param taskType Type of task being created
      * @return verify if task is created
      */
-    public static boolean createTask(String taskName, String taskType){
+    public static boolean createTask(String taskName, String taskType)
+    {
         boolean created = true;
 
         //placeholder if-else statement
-        if(created){
+        if (created)
+        {
             return true;
-        }else{
+        }
+        else
+        {
             return false;
         }
 
@@ -22,7 +27,8 @@ public class Schedule {
     /**
      * @param taskName Name of the task being viewed
      */
-    public static void viewTask(String taskName){
+    public static void viewTask(String taskName)
+    {
 
     }
 
