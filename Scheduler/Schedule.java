@@ -10,6 +10,15 @@ public class Schedule
 {
     private ArrayList taskList;
 
+    /** Allows the user to check availability in his/her schedule.
+     * @param date Name of the task being viewed.
+     *
+     */
+    public void checkAvailability(String date, double startTime, double duration)
+    {
+
+    }
+
 
 
 }
