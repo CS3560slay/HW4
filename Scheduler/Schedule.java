@@ -42,6 +42,42 @@ public class Schedule
         return true;
     }
 
+    /** Allows the user to delete a task in his/her schedule.
+     * @param taskName  A task that will be deleted from the user's schedule.
+     * @return true if the task was successfully removed from the schedule, false otherwise.
+     */
+    public boolean deleteTask(String taskName)
+    {
+        return true;
+    }
 
+    /** Allows the user to edit a task in his/her schedule.
+     * @param taskName  A task that will be edited from the user's schedule.
+     * @return true if the task was successfully edited from the schedule, false otherwise.
+     */
+    public boolean editTask(String taskName)
+    {
+        return true;
+    }
 
+    /** Displays the user's schedule for the day.
+     */
+    public static void printDailySchedule()
+    {
+
+    }
+
+    /** Displays the user's schedule for the week.
+     */
+    public static void printWeeklySchedule()
+    {
+
+    }
+
+    /** Displays the user's schedule for the month.
+     */
+    public static void printMonthlySchedule()
+    {
+
+    }
 }

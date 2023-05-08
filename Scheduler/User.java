@@ -98,21 +98,21 @@ public class User
      */
     public static void viewDailySchedule()
     {
-
+        // maybe call the printDailySchedule()
     }
 
     /** Allows the user to view his/her schedule for the week.
      */
     public static void viewWeeklySchedule()
     {
-
+        // maybe call the printWeeklySchedule()
     }
 
     /** Allows the user to view his/her schedule for the month.
      */
     public static void viewMonthlySchedule()
     {
-
+        // maybe call the printMonthlySchedule()
     }
 
     /** Allows the user to store the list of tasks to a data file.
