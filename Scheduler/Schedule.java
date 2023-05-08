@@ -39,7 +39,7 @@ public class Schedule
 
     /** Allows the user to delete a task.
      * @param taskName Name of task being deleted
-     * @return verify if task is deleted
+     * @return true if task is successfully deleted, false otherwise.
      */
     public static boolean deleteTask(String taskName)
     {
@@ -56,8 +56,8 @@ public class Schedule
     }
 
     /** Allows the user to edit a task.
-     * @param taskName Name of task being editted
-     * @return verify if task is editted
+     * @param taskName Name of task being edited
+     * @return true if task is successfully edited, false otherwise.
      */
     public static boolean editTask(String taskName)
     {
@@ -73,10 +73,47 @@ public class Schedule
         }
     }
 
-    /**
+    /** Allows the user to view his/her schedule for the day.
      */
     public static void viewDailySchedule()
     {
+
+    }
+
+    /** Allows the user to view his/her schedule for the week.
+     */
+    public static void viewWeeklySchedule()
+    {
+
+    }
+
+    /** Allows the user to view his/her schedule for the month.
+     */
+    public static void viewMonthlySchedule()
+    {
+
+    }
+
+    /** Allows the user to store the list of tasks to a data file.
+     * @param fileName Name of the data file which will store the task list.
+     * @return true if task list is successfully stored, false otherwise.
+     */
+    public static boolean storeTaskList(String fileName)
+    {
+        boolean stored = true;
+
+        return stored;
+    }
+
+    /** Allows the user to read the list of tasks from a data file.
+     * @param fileName Name of the data file which will contain the task list.
+     * @return true if task list is successfully read, false otherwise.
+     */
+    public static boolean readTasks(String fileName)
+    {
+        boolean edited = true;
+
+        return edited;
 
     }
 
