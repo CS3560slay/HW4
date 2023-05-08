@@ -5,14 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-//yo
 public class Schedule
 {
 
-    /**
+    /** Allows the user to create a new task.
      * @param taskName Name of the task being created
      * @param taskType Type of task being created
-     * @return verify if task is created
+     * @return true if task is created successfully, false otherwise.
      */
     public static boolean createTask(String taskName, String taskType)
     {
@@ -30,46 +29,61 @@ public class Schedule
 
     }
 
-    /**
-     * @param taskName Name of the task being viewed
+    /** Allows the user to view a task.
+     * @param taskName Name of the task being viewed.
      */
     public static void viewTask(String taskName)
     {
 
     }
 
-    /**
+    /** Allows the user to delete a task.
      * @param taskName Name of task being deleted
      * @return verify if task is deleted
      */
-    public static boolean deleteTask(String taskName){
+    public static boolean deleteTask(String taskName)
+    {
         boolean deleted = true;
 
-        if(deleted){
+        if (deleted)
+        {
             return true;
-        }else{
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /** Allows the user to edit a task.
+     * @param taskName Name of task being editted
+     * @return verify if task is editted
+     */
+    public static boolean editTask(String taskName)
+    {
+        boolean edited = true;
+
+        if (edited)
+        {
+            return true;
+        }
+        else
+        {
             return false;
         }
     }
 
     /**
-     * @param taskName Name of task being editted
-     * @return verify if task is editted
      */
-    public static boolean editTask(String taskName){
-        boolean edited = true;
+    public static void viewDailySchedule()
+    {
 
-        if(edited){
-            return true;
-        }else{
-            return false;
-        }
     }
 
-    public static void main(String[] args) throws ParseException{
+    public static void main(String[] args) throws ParseException
+    {
         boolean test = editTask("Hello");
         System.out.println(test);
-
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         SimpleDateFormat stf = new SimpleDateFormat("HH:mm");
