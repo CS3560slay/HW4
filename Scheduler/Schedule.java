@@ -11,12 +11,24 @@ public class Schedule
     private ArrayList taskList;
 
     /** Allows the user to check availability in his/her schedule.
-     * @param date Name of the task being viewed.
-     *
+     * @param date      The date to check for availability.
+     * @param startTime The start time to check for availability.
+     * @param duration  The duration to check for availability.
      */
-    public void checkAvailability(String date, double startTime, double duration)
+    public boolean checkAvailability(String date, double startTime, double duration)
     {
+        boolean isAvailable = true;
 
+        return isAvailable;
+    }
+
+    /** Allows the user to check if he/she is attempting to create a task
+     *  that overlaps an existing task.
+     * @param task  A task that may already exist within the user's schedule.
+     */
+    public boolean checkOverlap(Task task)
+    {
+        return false;
     }
 
 
