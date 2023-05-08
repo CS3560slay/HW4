@@ -2,7 +2,7 @@ package Scheduler;
 
 public class Task
 {
-    String taskName;
-    double duration;
+    private String taskName;
+    private double duration;
 }
 
