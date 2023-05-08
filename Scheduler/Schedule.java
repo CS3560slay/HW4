@@ -14,6 +14,7 @@ public class Schedule
      * @param date      The date to check for availability.
      * @param startTime The start time to check for availability.
      * @param duration  The duration to check for availability.
+     * @return true if there's an availability in the schedule, false otherwise.
      */
     public boolean checkAvailability(String date, double startTime, double duration)
     {
@@ -25,10 +26,20 @@ public class Schedule
     /** Allows the user to check if he/she is attempting to create a task
      *  that overlaps an existing task.
      * @param task  A task that may already exist within the user's schedule.
+     * @return true if there's an overlap in the schedule, false otherwise.
      */
     public boolean checkOverlap(Task task)
     {
         return false;
+    }
+
+    /** Allows the user to add a new task to his/her schedule.
+     * @param newTask  A task that will be added to the user's schedule.
+     * @return true if the new task was successfully added to the schedule, false otherwise.
+     */
+    public boolean addTask(Task newTask)
+    {
+        return true;
     }
 
 
