@@ -38,14 +38,21 @@ public class Schedule
         return false;
     }
 
-    /** Allows the user to add a new task to his/her schedule.
-     * @param newTask  A task that will be added to the user's schedule.
-     * @return true if the new task was successfully added to the schedule, false otherwise.
+    /**
+     * 
+     * @param eventName
+     * @param startTime
+     * @param endTime
+     * @param startDate
+     * @param endDate
+     * @param frequency
+     * @return
+     * 
      */
     public boolean addTask(String eventName, LocalDateTime startTime, LocalDateTime endTime, LocalDateTime startDate, LocalDateTime endDate, String frequency)
     {
 
-        Task event = new Task(eventName, startTime, endTime, startDate, endDate, frequency);
+        Task event = new Task(eventName, startTime, endTime, frequency);
         taskList.add(event);
         return true;
 
@@ -71,21 +78,21 @@ public class Schedule
 
     /** Displays the user's schedule for the day.
      */
-    public static void printDailySchedule()
+    public static void printDailySchedule(LocalDateTime dayTime)
     {
 
     }
 
     /** Displays the user's schedule for the week.
      */
-    public static void printWeeklySchedule()
+    public static void printWeeklySchedule(LocalDateTime startDate, LocalDateTime endDate)
     {
 
     }
 
     /** Displays the user's schedule for the month.
      */
-    public static void printMonthlySchedule()
+    public static void printMonthlySchedule(LocalDateTime startDate, LocalDateTime endDate)
     {
 
     }

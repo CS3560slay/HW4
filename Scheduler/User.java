@@ -96,6 +96,13 @@ public class User
         // maybe call the printMonthlySchedule()
     }
 
+    /**
+     * 
+     */
+    public static void viewSchedule(){
+
+    }
+
     /** Allows the user to store the list of tasks to a data file.
      * @param fileName Name of the data file which will store the task list.
      * @return true if task list is successfully stored, false otherwise.
@@ -154,6 +161,30 @@ public class User
             System.out.println("(9)To print your entire schedule");
             System.out.println("(0)Exit\n");
             input = scn.nextInt();
+
+            if(input == 1){
+
+            }else if(input == 2){
+
+            }else if(input == 3){
+                
+            }else if(input == 4){
+                
+            }else if(input == 5){
+                
+            }else if(input == 6){
+                viewDailySchedule();
+            }else if(input == 7){
+                viewWeeklySchedule();
+            }else if(input == 8){
+                viewMonthlySchedule();
+            }else if(input == 9){
+                viewSchedule();
+            }else if(input == 0){
+                //do nothing
+            }else{
+                System.out.println("Error: Please input an integer between 0-9\n\n");
+            }
 
         }while(input != 0);
 
