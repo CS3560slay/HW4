@@ -4,30 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
 
 public class User
 {
-    public static void main(String[] args) throws ParseException
-    {
-        boolean test = editTask("Hello");
-        System.out.println(test);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        SimpleDateFormat stf = new SimpleDateFormat("HH:mm");
-        Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
-        c.add(Calendar.DATE, 5);
-        String time = "23:55";
-        Date d = stf.parse(time);
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(d);
-        cal.add(Calendar.MINUTE, 10);
-        String newTime = stf.format(cal.getTime());
-        String output = sdf.format(c.getTime());
-        System.out.println(output);
-        System.out.println(newTime);
-
-    }
 
     /** Allows the user to create a new task.
      * @param taskName Name of the task being created
@@ -136,5 +117,46 @@ public class User
 
         return edited;
 
+    }
+
+    public static void main(String[] args) throws ParseException
+    {
+        Scanner scn = new Scanner(System.in);
+        int input;
+        // boolean test = editTask("Hello");
+        // System.out.println(test);
+
+        // SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        // SimpleDateFormat stf = new SimpleDateFormat("HH:mm");
+        // Calendar c = Calendar.getInstance();
+        // c.setTime(new Date());
+        // c.add(Calendar.DATE, 5);
+        // String time = "23:55";
+        // Date d = stf.parse(time);
+        // Calendar cal = Calendar.getInstance();
+        // cal.setTime(d);
+        // cal.add(Calendar.MINUTE, 10);
+        // String newTime = stf.format(cal.getTime());
+        // String output = sdf.format(c.getTime());
+        // System.out.println(output);
+        // System.out.println(newTime);
+
+        System.out.println("Welcome to your Scheduler.\nPlease select a task.");
+        do{
+            System.out.println("(1)To import a schedule (JSON file)");
+            System.out.println("(2)To export your schedule (JSON file)");
+            System.out.println("(3)To add an event to your schedule");
+            System.out.println("(4)To delete an event to your schedule");
+            System.out.println("(5)To edit an event to your schedule");
+            System.out.println("(6)To print a daily schedule");
+            System.out.println("(7)To print a weekly schedule");
+            System.out.println("(8)To print a montly schedule");
+            System.out.println("(9)To print your entire schedule");
+            System.out.println("(0)Exit\n");
+            input = scn.nextInt();
+
+        }while(input != 0);
+
+        System.out.println("\nThank you for using the scheduler!");
     }
 }

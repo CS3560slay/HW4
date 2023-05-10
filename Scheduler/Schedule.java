@@ -1,14 +1,19 @@
 package Scheduler;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+//import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class Schedule
 {
-    private ArrayList taskList;
+    private ArrayList<Task> taskList;
+
+    public Schedule(){
+        taskList = new ArrayList<Task>();
+    }
 
     /** Allows the user to check availability in his/her schedule.
      * @param date      The date to check for availability.
@@ -37,9 +42,13 @@ public class Schedule
      * @param newTask  A task that will be added to the user's schedule.
      * @return true if the new task was successfully added to the schedule, false otherwise.
      */
-    public boolean addTask(Task newTask)
+    public boolean addTask(String eventName, LocalDateTime startTime, LocalDateTime endTime, LocalDateTime startDate, LocalDateTime endDate, String frequency)
     {
+
+        Task event = new Task(eventName, startTime, endTime, startDate, endDate, frequency);
+        taskList.add(event);
         return true;
+
     }
 
     /** Allows the user to delete a task in his/her schedule.
