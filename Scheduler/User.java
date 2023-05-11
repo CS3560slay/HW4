@@ -226,8 +226,8 @@ public class User
 
         System.out.println("Welcome to your Scheduler.\nPlease select a task.");
         do{
-            System.out.println("(1)To import a schedule (JSON file)");
-            System.out.println("(2)To export your schedule (JSON file)");
+            System.out.println("(1)To import a schedule (CSV file)");
+            System.out.println("(2)To export your schedule (CSV file)");
             System.out.println("(3)To add an event to your schedule");
             System.out.println("(4)To delete an event to your schedule");
             System.out.println("(5)To edit an event to your schedule");
@@ -239,9 +239,13 @@ public class User
             input = scn.nextInt();
 
             if(input == 1){
-
+                System.out.println("Please enter the filepath of the csv file you wish to import: \n");
+                String filepath = scn.next();
+                //C:\\Users\\Neil\\Desktop\\CS\\CS3560\\Scheduler-project\\HW4\\output.csv
+                cal.importCSV(filepath);
             }else if(input == 2){
-
+                System.out.println("Attempting to export to csv...");
+                cal.exportCSV();
             }else if(input == 3){
                 createTask();
             }else if(input == 4){

@@ -5,12 +5,15 @@ import java.time.Duration;
 //import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Comparator;
+import java.io.*;
+//import com.opencsv.CSVReader;
 
 public class Schedule
 {
@@ -253,6 +256,89 @@ public class Schedule
                         " " + taskList.get(i).getEndDate());
             System.out.println();
 
+        }
+    }
+
+    public void exportCSV(){
+        String filePath = "C:\\Users\\Neil\\Desktop\\CS\\CS3560\\Scheduler-project\\HW4\\output.csv";
+        String delimiter = ",";
+        FileWriter writer = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String startDateString, endDateString;
+
+        try {
+            writer = new FileWriter(filePath);
+
+            // Write the header row
+            writer.append("eventName").append(delimiter)
+                    .append("startTime").append(delimiter)
+                    .append("endTime").append(delimiter)
+                    .append("frequency").append('\n');
+
+            // Write the data rows
+
+            for(int i = 0; i < taskList.size(); i++){
+
+                writer.append(taskList.get(i).getName());
+                writer.append(delimiter);
+                writer.append(taskList.get(i).getStartDate().format(formatter));
+                writer.append(delimiter);
+                writer.append(taskList.get(i).getEndDate().format(formatter));
+                writer.append(delimiter);
+                writer.append(taskList.get(i).getFrequency());
+                writer.append('\n');
+                // System.out.println(taskList.get(i).getName() + " " + taskList.get(i).getStartDate() +
+                //             " " + taskList.get(i).getEndDate());
+                // System.out.println();
+    
+            }
+
+            System.out.println("CSV file written successfully");
+        } catch (IOException e) {
+            System.out.println("Error writing CSV file: " + e.getMessage());
+        } finally {
+            try {
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                System.out.println("Error closing writer: " + e.getMessage());
+            }
+        }
+        
+    }
+
+    public void importCSV(String filepath){
+        File file = new File(filepath);
+        BufferedReader reader = null;
+        // BufferedReader reader = new BufferedReader(new FileReader(file));
+
+        try{
+            reader = new BufferedReader(new FileReader(file));
+            String line = reader.readLine();
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(",");
+
+                // create a new Task object and add it to the ArrayList
+                // System.out.println(values[0]);
+                // System.out.println(values[1]);
+                // System.out.println(values[2]);
+                // System.out.println(values[3]);
+                String eventName = values[0];
+                LocalDateTime startDate = LocalDateTime.parse(values[1], DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+                LocalDateTime endDate = LocalDateTime.parse(values[2], DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+                //System.out.println(values[3]);
+                String frequency = values[3];
+                Task task = new Task(eventName, startDate, endDate, frequency);
+                taskList.add(task);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading CSV file: " + e.getMessage());
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                System.out.println("Error closing reader: " + e.getMessage());
+            }
         }
     }
 }
