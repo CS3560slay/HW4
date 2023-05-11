@@ -167,7 +167,8 @@ public class Schedule
             if (objDate.toLocalDate().equals(dayTime.toLocalDate())) {
                 //System.out.println("Found similar.");
 
-                System.out.println(taskList.get(i).toString());
+                System.out.println(taskList.get(i).getName() + " " + taskList.get(i).getStartDate() +
+                        " " + taskList.get(i).getEndDate());
                 System.out.println();
             }
         }
