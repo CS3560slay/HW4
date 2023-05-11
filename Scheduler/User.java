@@ -34,20 +34,30 @@ public class User
         input = scanner.nextLine();
         endTime = LocalDateTime.parse(input, formatter);
 
-        System.out.println("Is this a weekly task?\n(1)Yes\n(2)No\n");
+        System.out.println("Is this a weekly task?\n(1)Yes\n(2)No\n(3)AntiTask");
         yes = scanner.nextInt();
 
         if(yes == 1){
             frequency = "Weekly";
+            Schedule cal = new Schedule();
+            cal.addTask(eventName, startTime, endTime, frequency);
         }else if(yes == 2){
             frequency = "Once";
-        }else{
-            frequency = "Unknown";
+            Schedule cal = new Schedule();
+            cal.addTask(eventName, startTime, endTime, frequency);
+        }else if(yes == 3){
+            frequency = "Once";
+            Schedule cal = new Schedule();
+            cal.addAntiTask(eventName, startTime, endTime, frequency);
         }
 
-        Schedule cal = new Schedule();
-        cal.addTask(eventName, startTime, endTime, frequency);
+        // Schedule cal = new Schedule();
+        // cal.addTask(eventName, startTime, endTime, frequency);
 
+    }
+
+    public static void createAntiTask(){
+        
     }
 
     public static void deleteTask(){

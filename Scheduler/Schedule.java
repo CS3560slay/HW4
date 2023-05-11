@@ -95,9 +95,26 @@ public class Schedule
         }else{
             return false;
         }
+    }
 
+    public boolean addAntiTask(String eventName, LocalDateTime startTime, LocalDateTime endTime, String frequency){
         
+        for (int i = 0; i < taskList.size(); i++) {
+            LocalDateTime objStartDate = taskList.get(i).getStartDate();
+            LocalDateTime objEndDate = taskList.get(i).getEndDate();
+            String event = taskList.get(i).getName();
+            if (objStartDate.toLocalDate().isBefore(startTime.toLocalDate()) && objEndDate.toLocalDate().isBefore(endTime.toLocalDate())) {
+                
+            }else if(objStartDate.toLocalDate().isAfter(startTime.toLocalDate()) && objEndDate.toLocalDate().isAfter(endTime.toLocalDate())){
+                
+            }else{
+                taskList.remove(i);
+            }
+        }
 
+        addTask(eventName, startTime, endTime, frequency);
+
+        return true;
     }
 
     /**
