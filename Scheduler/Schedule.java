@@ -49,7 +49,7 @@ public class Schedule
      * @return
      * 
      */
-    public boolean addTask(String eventName, LocalDateTime startTime, LocalDateTime endTime, LocalDateTime startDate, LocalDateTime endDate, String frequency)
+    public boolean addTask(String eventName, LocalDateTime startTime, LocalDateTime endTime, String frequency)
     {
 
         Task event = new Task(eventName, startTime, endTime, frequency);
@@ -58,13 +58,27 @@ public class Schedule
 
     }
 
-    /** Allows the user to delete a task in his/her schedule.
-     * @param taskName  A task that will be deleted from the user's schedule.
-     * @return true if the task was successfully removed from the schedule, false otherwise.
+    /**
+     * 
+     * @param eventName
+     * @param startTime
+     * @param endTime
+     * @return
      */
-    public boolean deleteTask(String taskName)
+    public boolean deleteTask(String eventName, LocalDateTime startTime, LocalDateTime endTime)
     {
-        return true;
+        
+        for (int i = 0; i < taskList.size(); i++) {
+            LocalDateTime objStartDate = taskList.get(i).getStartDate();
+            LocalDateTime objEndDate = taskList.get(i).getEndDate();
+            String event = taskList.get(i).getName();
+            if (objStartDate.toLocalDate().equals(startTime.toLocalDate()) && objEndDate.toLocalDate().equals(endTime.toLocalDate()) && event.equals(eventName)) {
+                taskList.remove(i);
+                return true;
+            }
+        }
+        return false;
+
     }
 
     /** Allows the user to edit a task in his/her schedule.

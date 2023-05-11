@@ -16,5 +16,17 @@ public class Task
         this.endTime = endTime;
         this.frequency = frequency;
     }
+
+    public String getName() {
+        return taskName;
+    }
+    
+    public LocalDateTime getStartDate() {
+        return startTime;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endTime;
+    }
 }
 
