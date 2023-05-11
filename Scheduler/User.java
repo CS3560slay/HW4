@@ -97,7 +97,7 @@ public class User
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-        System.out.print("Enter a start date and time (yyyy-MM-dd HH:mm): ");
+        System.out.print("Enter a date and time (yyyy-MM-dd HH:mm): ");
         input = scanner.nextLine();
         date = LocalDateTime.parse(input, formatter);
 
@@ -109,21 +109,42 @@ public class User
      */
     public static void viewWeeklySchedule()
     {
-        // maybe call the printWeeklySchedule()
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        LocalDateTime startDate, endDate;
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        System.out.print("Enter a start date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        startDate = LocalDateTime.parse(input, formatter);
+
+        endDate = startDate.plusDays(7);
+
+        //Schedule cal = new Schedule();
+        cal.printWeeklySchedule(startDate, endDate);
     }
 
     /** Allows the user to view his/her schedule for the month.
      */
     public static void viewMonthlySchedule()
     {
-        // maybe call the printMonthlySchedule()
-    }
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        LocalDateTime startDate, endDate;
 
-    /**
-     * 
-     */
-    public static void viewSchedule(){
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        System.out.print("Enter a start date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        startDate = LocalDateTime.parse(input, formatter);
+
+        endDate = startDate.plusDays(30);
+
+        //Schedule cal = new Schedule();
+        cal.printWeeklySchedule(startDate, endDate);
     }
 
     /** Allows the user to store the list of tasks to a data file.
@@ -202,7 +223,7 @@ public class User
             }else if(input == 8){
                 viewMonthlySchedule();
             }else if(input == 9){
-                viewSchedule();
+                cal.printSchedule();
             }else if(input == 0){
                 //do nothing
             }else{

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Comparator;
 
 public class Schedule
 {
@@ -150,10 +151,23 @@ public class Schedule
         return true;
     }
 
+    public void orderSchedule(){
+
+        taskList.sort(new Comparator<Task>() {
+            @Override
+            public int compare(Task task1, Task task2) {
+                return task1.getStartDate().compareTo(task2.getStartDate());
+            }
+        });
+
+    }
+
     /** Displays the user's schedule for the day.
      */
     public void printDailySchedule(LocalDateTime dayTime)
     {
+        orderSchedule();
+
         System.out.println("Your schedule for " + dayTime.toLocalDate() + " is: \n");
         System.out.println(taskList.size());
 
@@ -175,6 +189,8 @@ public class Schedule
      */
     public void printWeeklySchedule(LocalDateTime startDate, LocalDateTime endDate)
     {
+        orderSchedule();
+
         System.out.println("Your schedule for " + startDate.toLocalDate() + " to " + endDate.toLocalDate() + " is:\n");
         System.out.println(taskList.size());
 
@@ -194,6 +210,8 @@ public class Schedule
      */
     public void printMonthlySchedule(LocalDateTime startDate, LocalDateTime endDate)
     {
+        orderSchedule();
+
         System.out.println("Your schedule for the month from " + startDate.toLocalDate() + " to " +
                            endDate.toLocalDate() + " is :\n");
         System.out.println(taskList.size());
@@ -207,6 +225,18 @@ public class Schedule
                         " " + taskList.get(i).getEndDate());
                 System.out.println();
             }
+        }
+    }
+
+    public void printSchedule(){
+        orderSchedule();
+
+        for(int i = 0; i < taskList.size(); i++){
+
+            System.out.println(taskList.get(i).getName() + " " + taskList.get(i).getStartDate() +
+                        " " + taskList.get(i).getEndDate());
+            System.out.println();
+
         }
     }
 }
