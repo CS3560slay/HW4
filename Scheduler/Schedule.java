@@ -1,8 +1,11 @@
 package Scheduler;
 
 import java.text.ParseException;
+import java.time.Duration;
 //import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,9 +24,22 @@ public class Schedule
      * @param duration  The duration to check for availability.
      * @return true if there's an availability in the schedule, false otherwise.
      */
-    public boolean checkAvailability(String date, double startTime, double duration)
+    public boolean checkAvailability(LocalDateTime startTime, LocalDateTime endTime)
     {
         boolean isAvailable = true;
+
+        for (int i = 0; i < taskList.size(); i++) {
+            LocalDateTime objStartDate = taskList.get(i).getStartDate();
+            LocalDateTime objEndDate = taskList.get(i).getEndDate();
+            String event = taskList.get(i).getName();
+
+            //if-else can be more optimized to one if statement
+            if (objStartDate.isBefore(startTime) && objEndDate.isBefore(endTime)) {
+                return false;
+            }else if(objStartDate.isAfter(startTime) && objEndDate.isAfter(endTime)){
+                return false;
+            }
+        }
 
         return isAvailable;
     }
@@ -51,10 +67,36 @@ public class Schedule
      */
     public boolean addTask(String eventName, LocalDateTime startTime, LocalDateTime endTime, String frequency)
     {
+        boolean avail = checkAvailability(startTime, endTime);
 
-        Task event = new Task(eventName, startTime, endTime, frequency);
-        taskList.add(event);
-        return true;
+        if(avail){
+            if (frequency.equals("Weekly")) {
+                LocalDateTime currentDateTime = startTime;
+    
+                LocalTime eventStartTime = startTime.toLocalTime();
+                LocalTime eventEndTime = endTime.toLocalTime();
+    
+                Duration duration = Duration.between(eventStartTime, eventEndTime);
+                long hours = duration.toHours();
+    
+                while (currentDateTime.isBefore(endTime)) {
+                    Task event = new Task(eventName, currentDateTime, currentDateTime.plusHours(hours), frequency);
+                    taskList.add(event);
+                    currentDateTime = currentDateTime.plusWeeks(1);
+                }
+    
+                return true;
+    
+            } else {
+                Task event = new Task(eventName, startTime, endTime, frequency);
+                taskList.add(event);
+                return true;
+            }
+        }else{
+            return false;
+        }
+
+        
 
     }
 
