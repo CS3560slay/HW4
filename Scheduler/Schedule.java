@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -84,15 +85,18 @@ public class Schedule
                     taskList.add(event);
                     currentDateTime = currentDateTime.plusWeeks(1);
                 }
-    
+                //System.out.println("true");
                 return true;
     
             } else {
                 Task event = new Task(eventName, startTime, endTime, frequency);
                 taskList.add(event);
+                //System.out.println("true2");
                 return true;
             }
         }else{
+            //System.out.println("f");
+            System.out.println("Date or time is unavailable. Please try again.");
             return false;
         }
     }
@@ -103,9 +107,9 @@ public class Schedule
             LocalDateTime objStartDate = taskList.get(i).getStartDate();
             LocalDateTime objEndDate = taskList.get(i).getEndDate();
             String event = taskList.get(i).getName();
-            if (objStartDate.toLocalDate().isBefore(startTime.toLocalDate()) && objEndDate.toLocalDate().isBefore(endTime.toLocalDate())) {
+            if (objStartDate.isBefore(startTime) && objEndDate.isBefore(endTime)) {
                 
-            }else if(objStartDate.toLocalDate().isAfter(startTime.toLocalDate()) && objEndDate.toLocalDate().isAfter(endTime.toLocalDate())){
+            }else if(objStartDate.isAfter(startTime) && objEndDate.isAfter(endTime)){
                 
             }else{
                 taskList.remove(i);
@@ -151,21 +155,29 @@ public class Schedule
 
     /** Displays the user's schedule for the day.
      */
-    public static void printDailySchedule(LocalDateTime dayTime)
+    public void printDailySchedule(LocalDateTime dayTime)
     {
+        System.out.println("Your schedule for " + dayTime.toLocalDate() + " is: \n");
 
+        for (int i = 0; i < taskList.size(); i++) {
+            LocalDateTime objDate = taskList.get(i).getStartDate();
+            if (objDate.toLocalDate().equals(dayTime.toLocalDate())) {
+                System.out.println(taskList.get(i));
+                System.out.println();
+            }
+        }
     }
 
     /** Displays the user's schedule for the week.
      */
-    public static void printWeeklySchedule(LocalDateTime startDate, LocalDateTime endDate)
+    public void printWeeklySchedule(LocalDateTime startDate, LocalDateTime endDate)
     {
 
     }
 
     /** Displays the user's schedule for the month.
      */
-    public static void printMonthlySchedule(LocalDateTime startDate, LocalDateTime endDate)
+    public void printMonthlySchedule(LocalDateTime startDate, LocalDateTime endDate)
     {
 
     }

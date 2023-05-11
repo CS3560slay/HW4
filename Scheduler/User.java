@@ -56,12 +56,29 @@ public class User
 
     }
 
-    public static void createAntiTask(){
-        
-    }
-
     public static void deleteTask(){
+        Scanner scanner = new Scanner(System.in);
 
+        String eventName, input, frequency;
+        int yes;
+        LocalDateTime startTime;
+        LocalDateTime endTime;
+
+        System.out.println("What is the name of the task you wish to delete?");
+        eventName = scanner.nextLine();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        System.out.print("Enter a start date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        startTime = LocalDateTime.parse(input, formatter);
+
+        System.out.print("Enter an end date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        endTime = LocalDateTime.parse(input, formatter);
+
+        Schedule cal = new Schedule();
+        cal.deleteTask(eventName, startTime, endTime);
     }
 
     public static void editTask(){
@@ -72,7 +89,19 @@ public class User
      */
     public static void viewDailySchedule()
     {
-        // maybe call the printDailySchedule()
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        LocalDateTime date;
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        System.out.print("Enter a start date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        date = LocalDateTime.parse(input, formatter);
+
+        Schedule cal = new Schedule();
+        cal.printDailySchedule(date);
     }
 
     /** Allows the user to view his/her schedule for the week.
