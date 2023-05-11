@@ -20,9 +20,8 @@ public class Schedule
     }
 
     /** Allows the user to check availability in his/her schedule.
-     * @param date      The date to check for availability.
-     * @param startTime The start time to check for availability.
-     * @param duration  The duration to check for availability.
+     * @param startTime      The date to check for availability.
+     * @param endTime        The start time to check for availability.
      * @return true if there's an availability in the schedule, false otherwise.
      */
     public boolean checkAvailability(LocalDateTime startTime, LocalDateTime endTime)
@@ -178,13 +177,38 @@ public class Schedule
      */
     public void printWeeklySchedule(LocalDateTime startDate, LocalDateTime endDate)
     {
+        System.out.println("Your schedule for " + startDate.toLocalDate() + " to " + endDate.toLocalDate() + " is:\n");
+        System.out.println(taskList.size());
 
+        for(int i = 0; i < taskList.size(); i++){
+            LocalDateTime objDate = taskList.get(i).getStartDate();
+
+            if(objDate.toLocalDate().isBefore(endDate.toLocalDate()) &&
+                    objDate.toLocalDate().isAfter(startDate.toLocalDate())){
+                System.out.println(taskList.get(i).getName() + " " + taskList.get(i).getStartDate() +
+                        " " + taskList.get(i).getEndDate());
+                System.out.println();
+            }
+        }
     }
 
     /** Displays the user's schedule for the month.
      */
     public void printMonthlySchedule(LocalDateTime startDate, LocalDateTime endDate)
     {
+        System.out.println("Your schedule for the month from " + startDate.toLocalDate() + " to " +
+                           endDate.toLocalDate() + " is :\n");
+        System.out.println(taskList.size());
 
+        for(int i = 0; i < taskList.size(); i++){
+            LocalDateTime objDate = taskList.get(i).getStartDate();
+
+            if(objDate.toLocalDate().isBefore(endDate.toLocalDate()) &&
+                    objDate.toLocalDate().isAfter(startDate.toLocalDate())){
+                System.out.println(taskList.get(i).getName() + " " + taskList.get(i).getStartDate() +
+                        " " + taskList.get(i).getEndDate());
+                System.out.println();
+            }
+        }
     }
 }

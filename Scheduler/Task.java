@@ -20,15 +20,21 @@ public class Task
     }
 
     public String getName() {
+
         return taskName;
     }
     
     public LocalDateTime getStartDate() {
+
         return startTime;
     }
 
     public LocalDateTime getEndDate() {
         return endTime;
+    }
+
+    public String getFrequency(){
+        return frequency;
     }
 }
 
