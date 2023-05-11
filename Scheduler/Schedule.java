@@ -59,8 +59,6 @@ public class Schedule
      * @param eventName
      * @param startTime
      * @param endTime
-     * @param startDate
-     * @param endDate
      * @param frequency
      * @return
      * 
