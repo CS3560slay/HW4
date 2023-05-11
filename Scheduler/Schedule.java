@@ -36,8 +36,10 @@ public class Schedule
 
             //if-else can be more optimized to one if statement
             if (objStartDate.isBefore(startTime) && objEndDate.isBefore(endTime)) {
-                return false;
+                
             }else if(objStartDate.isAfter(startTime) && objEndDate.isAfter(endTime)){
+                
+            }else{
                 return false;
             }
         }
@@ -89,7 +91,7 @@ public class Schedule
             } else {
                 Task event = new Task(eventName, startTime, endTime, frequency);
                 taskList.add(event);
-                //System.out.println("true2");
+                System.out.println("arrayList size is: " + taskList.size());
                 return true;
             }
         }else{
