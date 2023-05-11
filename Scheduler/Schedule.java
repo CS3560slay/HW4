@@ -158,11 +158,16 @@ public class Schedule
     public void printDailySchedule(LocalDateTime dayTime)
     {
         System.out.println("Your schedule for " + dayTime.toLocalDate() + " is: \n");
+        System.out.println(taskList.size());
 
         for (int i = 0; i < taskList.size(); i++) {
             LocalDateTime objDate = taskList.get(i).getStartDate();
+            //System.out.println("Checking " + dayTime.toLocalDate() + " and " + objDate.toLocalDate());
+
             if (objDate.toLocalDate().equals(dayTime.toLocalDate())) {
-                System.out.println(taskList.get(i));
+                //System.out.println("Found similar.");
+
+                System.out.println(taskList.get(i).toString());
                 System.out.println();
             }
         }

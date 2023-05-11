@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class User
 {
+    public static Schedule cal = new Schedule();
 
     public static void createTask(){
         Scanner scanner = new Scanner(System.in);
@@ -39,15 +40,15 @@ public class User
 
         if(yes == 1){
             frequency = "Weekly";
-            Schedule cal = new Schedule();
+            //Schedule cal = new Schedule();
             cal.addTask(eventName, startTime, endTime, frequency);
         }else if(yes == 2){
             frequency = "Once";
-            Schedule cal = new Schedule();
+            //Schedule cal = new Schedule();
             cal.addTask(eventName, startTime, endTime, frequency);
         }else if(yes == 3){
             frequency = "Once";
-            Schedule cal = new Schedule();
+            //Schedule cal = new Schedule();
             cal.addAntiTask(eventName, startTime, endTime, frequency);
         }
 
@@ -77,7 +78,7 @@ public class User
         input = scanner.nextLine();
         endTime = LocalDateTime.parse(input, formatter);
 
-        Schedule cal = new Schedule();
+        //Schedule cal = new Schedule();
         cal.deleteTask(eventName, startTime, endTime);
     }
 
@@ -100,7 +101,7 @@ public class User
         input = scanner.nextLine();
         date = LocalDateTime.parse(input, formatter);
 
-        Schedule cal = new Schedule();
+        //Schedule cal = new Schedule();
         cal.printDailySchedule(date);
     }
 
