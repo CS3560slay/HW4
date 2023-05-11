@@ -1,78 +1,61 @@
 package Scheduler;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+// import java.text.SimpleDateFormat;
+// import java.util.Calendar;
+// import java.util.Date;
 import java.util.Scanner;
 
 public class User
 {
 
+    public static void createTask(){
+        Scanner scanner = new Scanner(System.in);
 
-    /** Allows the user to create a new task.
-     * @param taskName Name of the task being created
-     * @param taskType Type of task being created
-     * @return true if task is created successfully, false otherwise.
-     */
-    public static boolean createTask(String taskName, String taskType)
-    {
-        boolean created = true;
+        String eventName, input, frequency;
+        int yes;
+        LocalDateTime startTime;
+        LocalDateTime endTime;
 
-        //placeholder if-else statement
-        if (created)
-        {
-            return true;
+        System.out.println("What is the name of your task?");
+        eventName = scanner.nextLine();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        System.out.print("Enter a start date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        startTime = LocalDateTime.parse(input, formatter);
+
+        System.out.print("Enter an end date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        endTime = LocalDateTime.parse(input, formatter);
+
+        System.out.println("Is this a weekly task?\n(1)Yes\n(2)No\n");
+        yes = scanner.nextInt();
+
+        if(yes == 1){
+            frequency = "Weekly";
+        }else if(yes == 2){
+            frequency = "Once";
+        }else{
+            frequency = "Unknown";
         }
-        else
-        {
-            return false;
-        }
+
+        Schedule cal = new Schedule();
+        cal.addTask(eventName, startTime, endTime, frequency);
 
     }
 
-    /** Allows the user to view a task.
-     * @param taskName Name of the task being viewed.
-     */
-    public static void viewTask(String taskName)
-    {
+    public static void deleteTask(){
 
     }
 
-    /** Allows the user to delete a task.
-     * @param taskName Name of task being deleted
-     * @return true if task is successfully deleted, false otherwise.
-     */
-    public static boolean deleteTask(String taskName)
-    {
-        boolean deleted = true;
+    public static void editTask(){
 
-        if (deleted)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    /** Allows the user to edit a task.
-     * @param taskName Name of task being edited
-     * @return true if task is successfully edited, false otherwise.
-     */
-    public static boolean editTask(String taskName)
-    {
-        boolean edited = true;
-
-        if (edited)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 
     /** Allows the user to view his/her schedule for the day.
@@ -167,11 +150,11 @@ public class User
             }else if(input == 2){
 
             }else if(input == 3){
-                
+                createTask();
             }else if(input == 4){
-                
+                deleteTask();
             }else if(input == 5){
-                
+                editTask();
             }else if(input == 6){
                 viewDailySchedule();
             }else if(input == 7){
