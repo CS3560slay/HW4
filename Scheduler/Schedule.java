@@ -91,7 +91,8 @@ public class Schedule
             } else {
                 Task event = new Task(eventName, startTime, endTime, frequency);
                 taskList.add(event);
-                System.out.println("arrayList size is: " + taskList.size());
+                //System.out.println("arrayList size is: " + taskList.size());
+                System.out.println();
                 return true;
             }
         }else{
@@ -148,9 +149,22 @@ public class Schedule
      * @param taskName  A task that will be edited from the user's schedule.
      * @return true if the task was successfully edited from the schedule, false otherwise.
      */
-    public boolean editTask(String taskName)
+    public void editTask(String oldName, LocalDateTime oldStartDate, LocalDateTime oldEndDate, String newName, LocalDateTime newStartDate, LocalDateTime newEndDate)
     {
-        return true;
+        if(deleteTask(oldName, oldStartDate, oldEndDate)){
+            
+            if(checkAvailability(newStartDate, newEndDate)){
+                addTask(newName, newStartDate, newEndDate, "daily");
+            }else{
+                System.out.println("Please try again. New date/time is unavailable.");
+                System.out.println("Reinserting old task");
+                addTask(newName, newStartDate, newEndDate, "daily");
+            }
+
+        }else{
+            System.out.println("Task is not found. Please try again.");
+        }
+
     }
 
     public void orderSchedule(){

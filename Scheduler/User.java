@@ -83,7 +83,39 @@ public class User
     }
 
     public static void editTask(){
+        Scanner scanner = new Scanner(System.in);
 
+        String eventName, input, frequency, newEventName;
+        int yes;
+        LocalDateTime startTime, newStartTime;
+        LocalDateTime endTime, newEndTime;
+
+        System.out.println("What is the name of the task you wish to edit?");
+        eventName = scanner.nextLine();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        System.out.print("Enter the old start date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        startTime = LocalDateTime.parse(input, formatter);
+
+        System.out.print("Enter the old end date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        endTime = LocalDateTime.parse(input, formatter);
+
+        System.out.println("What is the new name of the task you wish to edit?");
+        newEventName = scanner.nextLine();
+
+        System.out.print("Enter the new start date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        newStartTime = LocalDateTime.parse(input, formatter);
+
+        System.out.print("Enter the new end date and time (yyyy-MM-dd HH:mm): ");
+        input = scanner.nextLine();
+        newEndTime = LocalDateTime.parse(input, formatter);
+
+        //Schedule cal = new Schedule();
+        cal.editTask(eventName, startTime, endTime, newEventName, newStartTime, newEndTime);
     }
 
     /** Allows the user to view his/her schedule for the day.
